@@ -5,14 +5,11 @@ let app = Vue.createApp({
         time_loaded: "",
         tickets: [],
         mphOver25: [],
-        totalRows:0
        }
     },
     created(){
         this.getCurrentDate();
         this.getAllTickets();
-        
-        
     },
     methods: {
         async getAllTickets(){
@@ -21,7 +18,6 @@ let app = Vue.createApp({
             
             this.mphOver25 = this.tickets.filter((ticket) => (ticket.actual_speed - ticket.posted_speed) > 25);
             
-            this.totalRows = this.tickets.length;
             this.showTable = true;
         },
         getCurrentDate(){
@@ -32,7 +28,7 @@ let app = Vue.createApp({
             var date = new Date();
             const monthIndex = date.getMonth();
             const monthName = monthNames[monthIndex];
-            const day = date.getDay();
+            const day = date.getUTCDate();
             const year = date.getFullYear();
             this.time_loaded = `${monthName} ${day}, ${year}`;
         },
