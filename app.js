@@ -4,7 +4,7 @@ let app = Vue.createApp({
         showTable:false,
         time_loaded: "",
         tickets: [],
-        mphOver25: [],
+        mphOver25: []
        }
     },
     created(){
