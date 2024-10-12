@@ -11,19 +11,17 @@ let app = Vue.createApp({
     created(){
         this.getCurrentDate();
         this.getAllTickets();
-        this.getTicketsBy25Mph();
+        
         
     },
     methods: {
         async getAllTickets(){
             const response = await fetch("tickets1.json");
             this.tickets = await response.json();
-          
-            this.totalRows = this.tickets.length;
-            this.showTable = true;
-        },
-        getTicketsBy25Mph(){
+            
             this.mphOver25 = this.tickets.filter((ticket) => (ticket.actual_speed - ticket.posted_speed) > 25);
+            
+            this.totalRows = this.tickets.length;
             this.showTable = true;
         },
         getCurrentDate(){
