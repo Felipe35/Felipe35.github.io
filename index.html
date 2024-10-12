@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tickets Program</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> <!-- vue.js -->
+<!-- bootstrap, need to use https for these links -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container" id="main">
+        <nav class="navbar navbar-inverse">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Our Website</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">All Tickets</a></li>
+                    <li><a href="25over.html">25 over mph</a></li>
+                </ul>
+            </div>
+        </nav> <!-- end nav-bar -->
+        <h2>Tickets {{time_loaded}} Minneapolis/St. Paul</h2>
+        <p>Total Rows: {{totalRows}}</p>
+        <div v-show="showTable">
+        
+            <table class='table'>
+                <tr> <th>Ticket ID</th> <th>Time</th><th>Posted Speed</th> <th>MPH Over</th> <th>Violator Sex</th></tr>
+                <tr v-for="ticket in tickets"> 
+                <td> {{ticket.tid}}</td><td>{{ticket.stop_time}}</td><td>{{ticket.posted_speed}}</td><td>{{ticket.actual_speed - ticket.posted_speed}}</td> <td>{{ticket.violator_sex}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+</body>
+<script src="app.js"></script>
+</html>
