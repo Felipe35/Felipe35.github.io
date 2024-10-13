@@ -20,7 +20,8 @@ let app = Vue.createApp({
         },
          async getTicketsBy25Mph(){
             const response = await fetch("tickets1.json");
-            this.mphOver25 = this.tickets.filter((ticket) => (ticket.actual_speed - ticket.posted_speed) > 25);
+            this.mphOver25 = await response.json();
+            this.mphOver25.filter((ticket) => (ticket.actual_speed - ticket.posted_speed) > 25);
             this.showTable = true;
         },
         getCurrentDate(){
